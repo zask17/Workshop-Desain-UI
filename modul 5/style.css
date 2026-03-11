@@ -1,0 +1,54 @@
+:root {
+    --crimson: #8b0000;
+    --gold: #c9a84c;
+    --dark: #0a0608;
+}
+
+body {
+    font-family: 'Cormorant Garamond', serif;
+    background-color: var(--dark);
+    color: #e8d5c4;
+}
+
+/* Navbar Bootstrap */
+.navbar {
+    background: rgba(10, 6, 8, 0.9) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(139, 0, 0, 0.3);
+}
+
+/* Hero Section pake Bootstrap Flex */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgba(10, 6, 8, 0.8), rgba(10, 6, 8, 0.8)),
+        url('https://images8.alphacoders.com/121/1216503.jpg') center/cover no-repeat;
+}
+
+/* Kustomisasi Tombol Bootstrap */
+.btn-henituse {
+    background-color: var(--crimson);
+    color: white;
+    border: 1px solid var(--gold);
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.btn-henituse:hover {
+    background-color: #a52a2a;
+    box-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
+}
+
+.card-power {
+    background: #1c1015;
+    border: 1px solid rgba(201, 168, 76, 0.2);
+    border-radius: 15px;
+    transition: 0.4s;
+}
+
+.card-power:hover {
+    transform: translateY(-10px);
+    border-color: var(--gold);
+}

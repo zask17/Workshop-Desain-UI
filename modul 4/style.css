@@ -1,0 +1,373 @@
+body,
+h2,
+h3,
+p,
+ul {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Body styling */
+body {
+  background-attachment: fixed;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url('https://i.pinimg.com/1200x/a0/48/eb/a048eb223eb4e30f21df0b93568b6f6d.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #2c3e50;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  text-align: justify;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+
+
+/* Grid container */
+.grid-container {
+  display: grid;
+  gap: 20px;
+  grid-template-areas:
+    "header header"
+    "sidebar body"
+    "footer footer";
+  grid-template-columns: 400px 1fr;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Grid areas */
+.header-section {
+  grid-area: header;
+}
+
+.body-section {
+  grid-area: body;
+}
+
+.sidebar-section {
+  grid-area: sidebar;
+}
+
+.footer-section {
+  grid-area: footer;
+}
+
+
+/* Header */
+.header-section {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  background-color: #2c3e50;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  color: white;
+  justify-content: space-between;
+  padding: 10px 25px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Nav links (jika ada) */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #bdc3c7;
+  text-decoration: none;
+}
+
+.nav-links a.active {
+  color: #3498db;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.nav-links a:hover {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Logo */
+.logo img {
+  display: block;
+  filter: brightness(1.2) contrast(1.1);
+  height: 50px;
+  mix-blend-mode: multiply;
+  transition: transform 0.3s ease;
+  width: auto;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.logo img:hover {
+  transform: scale(1.05);
+}
+
+
+/* Grid Details di Sidebar */
+.grid-details {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  padding: 15px;
+}
+
+.grid-item {
+  border-bottom: 1px solid #ddd;
+  font-size: 0.85rem;
+  padding: 5px 0;
+}
+
+
+/* Body section - Grid Card seperti foto */
+.body-section {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* Horizontal grid, responsif */
+  padding: 10px;
+}
+
+/* Post (Card seperti foto) */
+.post {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 10px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  text-align: left;
+  align-items: start;
+}
+
+.post img {
+  grid-row: span 3;
+  border-radius: 8px;
+  height: 220px;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 8px;
+  margin-bottom: 0;
+  display: block;
+}
+
+.post h2 {
+  font-size: 1.2rem;
+}
+
+.post p {
+  font-size: 0.9rem;
+}
+
+.post ul {
+  font-size: 0.9rem;
+}
+
+/* List Konten */
+.trivia-list {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.trivia-list li {
+  list-style-type: circle;
+  margin-bottom: 8px;
+}
+
+
+/* Sidebar */
+.sidebar-section {
+  background-color: #dbe4eb;
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+}
+
+/* Tombol close */
+.close-btn {
+  align-items: center;
+  background: #ffffff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  color: #2c3e50;
+  cursor: pointer;
+  display: none;
+  font-size: 18px;
+  font-weight: bold;
+  height: 36px;
+  justify-content: center;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  transition: all 0.3s ease;
+  width: 36px;
+  z-index: 20;
+}
+
+.close-btn:hover {
+  background: #547392;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+  color: #ffffff;
+  transform: scale(1.1);
+}
+
+.close-btn:active {
+  transform: scale(0.95);
+}
+
+/* Sidebar image */
+.sidebar-img {
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: block;
+  height: auto;
+  margin-bottom: 15px;
+  max-width: 100%;
+}
+
+
+/* Hamburger button */
+.hamburger-btn {
+  background-color: #547392;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  display: none;
+  font-weight: bold;
+  padding: 8px 15px;
+  margin-right: 15px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-btn:hover {
+  background-color: #6c8ead;
+  transform: scale(1.05);
+}
+
+.hamburger-btn:active {
+  transform: scale(0.95);
+}
+
+
+/* Overlay */
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9;
+}
+
+.overlay.active {
+  display: block;
+}
+
+
+/* Footer */
+.footer-section {
+  align-items: center;
+  background-color: #2c3e50;
+  border-radius: 15px;
+  color: #bdc3c7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+
+/* Social links */
+.social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.social-links a {
+  color: #bdc3c7;
+  text-decoration: none;
+}
+
+.social-links a:hover {
+  color: white;
+}
+
+
+/* Responsivitas Mobile */
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: block;
+  }
+
+  .grid-container {
+    grid-template-areas:
+      "header"
+      "body"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-section {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    width: 300px;
+    z-index: 10;
+  }
+
+  .sidebar-section.active {
+    overflow-y: auto;
+    /* Sidebar scrollable */
+    transform: translateX(0);
+  }
+
+  .close-btn {
+    display: flex;
+    /* Muncul di mobile */
+  }
+}
+
+/* Animasi slideDown */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

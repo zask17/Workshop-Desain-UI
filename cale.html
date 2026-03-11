@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="id" data-bs-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trash of the Count's Family - Modul 5</title>
+
+  <!-- Bootstrap 5.3.8 via jsDelivr CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --crimson:       #8b0000;
+      --crimson-light: #c0392b;
+      --crimson-glow:  #ff2a2a;
+      --gold:          #c9a84c;
+      --gold-light:    #f0d080;
+      --dark:          #0a0608;
+      --dark-mid:      #120c0e;
+      --dark-card:     #1c1015;
+      --text-main:     #e8d5c4;
+      --text-muted-c:  #8a7060;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background-color: var(--dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* CURSOR */
+    .cursor {
+      position: fixed; width: 12px; height: 12px;
+      background: var(--crimson-glow); border-radius: 50%;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+      transition: width .3s, height .3s;
+      box-shadow: 0 0 12px var(--crimson-glow), 0 0 30px rgba(255,42,42,.4);
+    }
+    .cursor-ring {
+      position: fixed; width: 36px; height: 36px;
+      border: 1px solid rgba(201,168,76,.6); border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%,-50%);
+      transition: width .4s, height .4s;
+    }
+
+    /* PARTICLES */
+    #particles { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .particle {
+      position: absolute; border-radius: 50%;
+      animation: float-up linear infinite; opacity: 0;
+    }
+    @keyframes float-up {
+      0%   { transform: translateY(100vh) translateX(0) scale(0); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: .6; }
+      100% { transform: translateY(-10vh) translateX(var(--drift)) scale(.5); opacity: 0; }
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      background: transparent !important;
+      transition: background .4s, padding .4s;
+      border-bottom: 1px solid transparent;
+      transition: all .4s;
+    }
+    .navbar.scrolled {
+      background: rgba(10,6,8,.96) !important;
+      backdrop-filter: blur(20px);
+      border-bottom-color: rgba(139,0,0,.3);
+      box-shadow: 0 4px 40px rgba(0,0,0,.8);
+    }
+    .navbar-brand {
+      font-family: 'Cinzel Decorative', serif !important;
+      font-size: 1.05rem !important; color: var(--gold) !important;
+      letter-spacing: 2px; text-shadow: 0 0 20px rgba(201,168,76,.5);
+    }
+    .nav-link {
+      font-family: 'Cinzel', serif !important;
+      font-size: .7rem !important; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--text-muted-c) !important;
+      transition: color .3s, text-shadow .3s !important;
+    }
+    .nav-link:hover { color: var(--gold) !important; text-shadow: 0 0 15px rgba(201,168,76,.5); }
+    .btn-henituse {
+      font-family: 'Cinzel', serif !important;
+      font-size: .68rem !important; letter-spacing: 2px; text-transform: uppercase;
+      background: transparent !important; border: 1px solid var(--crimson) !important;
+      color: var(--crimson-light) !important; transition: all .3s !important; cursor: none;
+    }
+    .btn-henituse:hover {
+      background: var(--crimson) !important; color: #fff !important;
+      box-shadow: 0 0 25px rgba(139,0,0,.6) !important;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 100%, rgba(139,0,0,.25), transparent 70%),
+        url('https://images8.alphacoders.com/121/1216503.jpg') center/cover no-repeat;
+      filter: brightness(.22) saturate(.8);
+      transform: scale(1.06); transition: transform 8s ease;
+    }
+    .hero:hover .hero-bg { transform: scale(1.0); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(10,6,8,.3) 0%, transparent 35%, transparent 60%, rgba(10,6,8,.97) 100%);
+    }
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-badge {
+      display: inline-block; font-family: 'Cinzel', serif;
+      font-size: .62rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold);
+      border: 1px solid rgba(201,168,76,.3); padding: 8px 20px; margin-bottom: 28px;
+      animation: fadeInDown 1s ease .3s both;
+    }
+    .hero-title {
+      font-family: 'Cinzel Decorative', serif; font-weight: 900;
+      line-height: 1.1; margin-bottom: 10px;
+      animation: fadeInUp 1s ease .5s both;
+      background: linear-gradient(135deg, #fff 0%, var(--gold-light) 40%, var(--gold) 65%, #c0392b 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      filter: drop-shadow(0 0 40px rgba(139,0,0,.5));
+    }
+    .hero-subtitle-kr {
+      font-style: italic; letter-spacing: 4px; color: var(--text-muted-c);
+      animation: fadeInUp 1s ease .7s both;
+    }
+    .hero-divider {
+      display: flex; align-items: center; justify-content: center; gap: 15px;
+      margin: 22px auto; animation: fadeIn 1s ease .9s both;
+    }
+    .hero-divider::before, .hero-divider::after {
+      content: ''; width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--crimson));
+    }
+    .hero-divider::after { background: linear-gradient(to left, transparent, var(--crimson)); }
+    .hero-divider span { color: var(--crimson); }
+    .hero-desc {
+      font-size: 1.15rem; line-height: 1.9; font-style: italic; color: rgba(232,213,196,.8);
+      animation: fadeInUp 1s ease 1s both;
+    }
+    .hero-buttons { animation: fadeInUp 1s ease 1.2s both; }
+
+    .btn-primary-cale {
+      font-family: 'Cinzel', serif !important; font-size: .7rem !important;
+      letter-spacing: 3px; text-transform: uppercase; text-decoration: none;
+      padding: 15px 38px !important;
+      background: linear-gradient(135deg, #8b0000, #c0392b) !important;
+      color: #fff !important; border: none !important;
+      position: relative; overflow: hidden;
+      transition: all .4s !important;
+      box-shadow: 0 4px 30px rgba(139,0,0,.4) !important; cursor: none;
+    }
+    .btn-primary-cale::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.15), transparent);
+      transition: left .5s;
+    }
+    .btn-primary-cale:hover::before { left: 100%; }
+    .btn-primary-cale:hover { transform: translateY(-3px) !important; box-shadow: 0 8px 40px rgba(139,0,0,.7) !important; }
+
+    .btn-outline-cale {
+      font-family: 'Cinzel', serif !important; font-size: .7rem !important;
+      letter-spacing: 3px; text-transform: uppercase; text-decoration: none;
+      padding: 14px 38px !important; background: transparent !important;
+      color: var(--gold) !important; border: 1px solid rgba(201,168,76,.5) !important;
+      transition: all .4s !important; cursor: none;
+    }
+    .btn-outline-cale:hover {
+      background: rgba(201,168,76,.1) !important; border-color: var(--gold) !important;
+      transform: translateY(-3px) !important; box-shadow: 0 8px 40px rgba(201,168,76,.2) !important;
+    }
+
+    .scroll-indicator {
+      position: absolute; bottom: 35px; left: 50%; transform: translateX(-50%);
+      z-index: 2; text-align: center; animation: fadeIn 1s ease 2s both;
+    }
+    .scroll-indicator small {
+      font-family: 'Cinzel', serif; font-size: .58rem; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--text-muted-c); display: block; margin-bottom: 8px;
+    }
+    .scroll-line {
+      width: 1px; height: 48px; margin: 0 auto;
+      background: linear-gradient(to bottom, var(--crimson), transparent);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+    @keyframes scroll-pulse {
+      0%,100% { opacity: .3; transform: scaleY(.8); }
+      50%      { opacity: 1;  transform: scaleY(1); }
+    }
+
+    /* TICKER */
+    .ticker-wrap { background: rgba(139,0,0,.12); border-top: 1px solid rgba(139,0,0,.3); border-bottom: 1px solid rgba(139,0,0,.3); overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-block; animation: ticker-scroll 30s linear infinite; }
+    .ticker-item { display: inline-block; font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); padding: 12px 50px; }
+    .ticker-sep { color: var(--crimson); margin: 0 -30px; }
+    @keyframes ticker-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* SECTION LABELS */
+    .section-label { font-family: 'Cinzel', serif; font-size: .62rem; letter-spacing: 6px; text-transform: uppercase; color: var(--crimson-light); display: block; margin-bottom: 12px; }
+    .section-title { font-family: 'Cinzel Decorative', serif; color: var(--text-main); }
+    .section-title span { color: var(--gold); }
+    .section-rule { display: flex; align-items: center; justify-content: center; gap: 12px; }
+    .section-rule::before, .section-rule::after { content: ''; width: 55px; height: 1px; background: var(--crimson); }
+    .section-rule span { color: var(--gold); }
+
+    /* BG COLORS */
+    .bg-synopsis  { background-color: var(--dark-mid); }
+    .bg-powers    { background-color: var(--dark); }
+    .bg-chars     { background-color: var(--dark-mid); }
+    .bg-cta       { background-color: var(--dark); position: relative; overflow: hidden; }
+
+    /* SYNOPSIS */
+    .synopsis-frame { position: relative; overflow: hidden; border: 1px solid rgba(139,0,0,.35); }
+    .synopsis-frame img { width: 100%; height: 480px; object-fit: cover; filter: saturate(.7) brightness(.8); transition: filter .5s; display: block; }
+    .synopsis-frame:hover img { filter: saturate(.9) brightness(.9); }
+    .synopsis-frame::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40%; background: linear-gradient(to top, var(--dark-mid), transparent); }
+    .corner { position: absolute; width: 28px; height: 28px; border-color: var(--gold); border-style: solid; z-index: 2; }
+    .corner.tl { top:-4px; left:-4px; border-width: 2px 0 0 2px; }
+    .corner.tr { top:-4px; right:-4px; border-width: 2px 2px 0 0; }
+    .corner.bl { bottom:-4px; left:-4px; border-width: 0 0 2px 2px; }
+    .corner.br { bottom:-4px; right:-4px; border-width: 0 2px 2px 0; }
+    .synopsis-quote { font-size: 1.45rem; font-style: italic; color: var(--gold); line-height: 1.6; padding-left: 22px; border-left: 2px solid var(--crimson); margin-bottom: 22px; }
+    .synopsis-body { font-size: 1rem; line-height: 2; color: rgba(232,213,196,.75); }
+    .tag-pill { display: inline-block; font-family: 'Cinzel', serif; font-size: .58rem; letter-spacing: 2px; text-transform: uppercase; padding: 5px 14px; margin: 3px; border: 1px solid rgba(139,0,0,.4); color: var(--crimson-light); }
+
+    /* POWER CARDS */
+    .power-card {
+      background: var(--dark-card) !important; border: none !important;
+      position: relative; overflow: hidden; transition: all .4s; cursor: none;
+    }
+    .power-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(to right, transparent, var(--crimson), transparent); transform: scaleX(0); transition: transform .4s; }
+    .power-card:hover::after { transform: scaleX(1); }
+    .power-card:hover { background: #2a1820 !important; transform: translateY(-5px); }
+    .power-glow { position: absolute; top: 0; right: 0; width: 90px; height: 90px; background: radial-gradient(circle, rgba(139,0,0,.15), transparent); transition: all .4s; }
+    .power-card:hover .power-glow { width: 180px; height: 180px; background: radial-gradient(circle, rgba(139,0,0,.28), transparent); }
+    .power-num { font-family: 'Cinzel Decorative', serif; font-size: 3rem; color: rgba(139,0,0,.15); line-height: 1; transition: color .4s; }
+    .power-card:hover .power-num { color: rgba(139,0,0,.35); }
+    .power-name { font-family: 'Cinzel', serif; font-size: .78rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+    .power-user { font-family: 'Cinzel', serif; font-size: .72rem; color: var(--crimson-light); font-style: italic; }
+    .power-desc { font-size: .9rem; line-height: 1.8; color: var(--text-muted-c); }
+
+    /* CHARACTER CARDS */
+    .char-card { background: var(--dark-card) !important; border: none !important; overflow: hidden; transition: transform .4s !important; cursor: none; }
+    .char-card:hover { transform: translateY(-8px) !important; }
+    .char-visual { height: 240px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+    .char-visual.cale { background: radial-gradient(circle at center, rgba(139,0,0,.4), rgba(10,6,8,.9)); }
+    .char-visual.raon { background: radial-gradient(circle at center, rgba(20,20,80,.6), rgba(10,6,8,.9)); }
+    .char-visual.han  { background: radial-gradient(circle at center, rgba(10,50,10,.4), rgba(10,6,8,.9)); }
+    .char-rune { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-family: 'Cinzel Decorative', serif; font-size: 7rem; opacity: .06; pointer-events: none; }
+    .char-emoji { font-size: 5.5rem; position: relative; z-index: 1; transition: transform .4s; }
+    .char-card:hover .char-emoji { transform: scale(1.1); }
+    .char-badge-bs { font-family: 'Cinzel', serif !important; font-size: .55rem !important; letter-spacing: 2px; background: rgba(139,0,0,.85) !important; }
+    .char-sep { height: 1px; background: linear-gradient(to right, transparent, rgba(139,0,0,.5), transparent); margin: 0 1.25rem 1rem; }
+    .char-name { font-family: 'Cinzel', serif; font-size: 1.05rem; letter-spacing: 2px; }
+    .char-role { font-size: .82rem; font-style: italic; color: var(--gold); }
+    .char-desc-text { font-size: .88rem; line-height: 1.8; color: var(--text-muted-c); }
+
+    /* STAT BARS */
+    .stat-label-c { font-family: 'Cinzel', serif; font-size: .55rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted-c); width: 72px; flex-shrink: 0; }
+    .stat-track { flex: 1; height: 2px; background: rgba(255,255,255,.05); overflow: hidden; }
+    .stat-fill { height: 100%; background: linear-gradient(to right, var(--crimson), var(--crimson-glow)); transform-origin: left; transform: scaleX(0); transition: transform 1.2s cubic-bezier(.4,0,.2,1); }
+    .stat-val-c { font-family: 'Cinzel', serif; font-size: .6rem; color: var(--crimson-light); width: 24px; text-align: right; }
+
+    /* CTA */
+    .cta-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(139,0,0,.12), transparent), repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(139,0,0,.03) 40px, rgba(139,0,0,.03) 41px); }
+    .cta-quote { font-family: 'Cinzel Decorative', serif; line-height: 1.4; color: var(--text-main); }
+    .cta-quote em { color: var(--gold); }
+    .cta-sub { font-size: 1rem; font-style: italic; color: var(--text-muted-c); line-height: 1.9; }
+
+    /* FOOTER */
+    footer { background-color: var(--dark-mid); border-top: 1px solid rgba(139,0,0,.2); }
+    .footer-brand { font-family: 'Cinzel Decorative', serif; color: var(--gold); }
+    .footer-rule { width: 55px; height: 1px; background: var(--crimson); margin: 14px auto; }
+    .footer-text { font-size: .78rem; line-height: 1.9; color: var(--text-muted-c); }
+    .footer-text span { color: var(--crimson-light); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease, transform .8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .1s; } .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; } .delay-4 { transition-delay: .4s; }
+    .delay-5 { transition-delay: .5s; }
+
+    @keyframes fadeInDown { from { opacity:0; transform:translateY(-20px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeInUp   { from { opacity:0; transform:translateY(20px);  } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeIn     { from { opacity:0; } to { opacity:1; } }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div id="particles"></div>
+
+<!-- ═══ NAVBAR (Bootstrap) ═══ -->
+<nav class="navbar navbar-expand-lg fixed-top py-3" id="navbar">
+  <div class="container">
+    <a class="navbar-brand" href="#">Henituse Guild</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2 gap-2 mt-3 mt-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#synopsis">Kisah</a></li>
+        <li class="nav-item"><a class="nav-link" href="#powers">Kekuatan</a></li>
+        <li class="nav-item"><a class="nav-link" href="#characters">Karakter</a></li>
+        <li class="nav-item ms-lg-2"><a class="btn btn-henituse px-4 py-2" href="#">Baca Novel</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="row justify-content-center">
+      <div class="col-lg-9 col-xl-8">
+        <div class="hero-badge">✦ Light Novel · Fantasy · Isekai ✦</div>
+        <h1 class="hero-title display-2 fw-bold">Trash of the<br>Count's Family</h1>
+        <p class="hero-subtitle-kr fs-6 mb-0">백작가의 망나니가 되었다</p>
+        <div class="hero-divider"><span>◆</span></div>
+        <p class="hero-desc mx-auto" style="max-width:600px;">
+          Seorang pria biasa terbangun sebagai Cale Henituse — si "sampah" dari novel yang pernah ia baca. Rencananya sederhana: hidup malas, kaya, dan damai. Sayangnya, takdir memiliki rencana lain.
+        </p>
+        <div class="hero-buttons d-flex gap-3 justify-content-center flex-wrap mt-4">
+          <a href="#synopsis" class="btn btn-primary-cale">Mulai Perjalanan</a>
+          <a href="#characters" class="btn btn-outline-cale">Kenali Karakter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <small>Scroll</small>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══ TICKER ═══ -->
+<div class="ticker-wrap">
+  <div class="ticker-inner">
+    <span class="ticker-item">Trash of the Count's Family</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Cale Henituse</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Ancient Powers</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Choi Han</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Raon Miru</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">White Star</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Kim Rok Soo</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">I Am The Greatest</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Trash of the Count's Family</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Cale Henituse</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Ancient Powers</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Choi Han</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Raon Miru</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">White Star</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">Kim Rok Soo</span><span class="ticker-sep">✦</span>
+    <span class="ticker-item">I Am The Greatest</span><span class="ticker-sep">✦</span>
+  </div>
+</div>
+
+<!-- ═══ SYNOPSIS (Bootstrap Grid) ═══ -->
+<section class="bg-synopsis py-5" id="synopsis" style="padding-top:5rem!important;padding-bottom:5rem!important;">
+  <div class="container py-4">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-5 reveal">
+        <div class="synopsis-frame">
+          <img src="https://images8.alphacoders.com/121/1216503.jpg" alt="Cale Henituse" loading="lazy">
+          <div class="corner tl"></div><div class="corner tr"></div>
+          <div class="corner bl"></div><div class="corner br"></div>
+        </div>
+      </div>
+      <div class="col-lg-7">
+        <div class="mb-4 reveal">
+          <span class="section-label">Tentang Novel</span>
+          <h2 class="section-title fs-1 mb-3">Kisah Si <span>Pemalas</span><br>yang Menyelamatkan Dunia</h2>
+          <div class="section-rule justify-content-start"><span>◆</span></div>
+        </div>
+        <blockquote class="synopsis-quote reveal delay-1">
+          "Cukup memiliki rumah yang nyaman, cukup makan, dan hidup malas — itu saja impianku."
+        </blockquote>
+        <p class="synopsis-body reveal delay-2">
+          Kim Rok Soo, seorang pemuda dari Korea, tiba-tiba terbangun di dalam tubuh Cale Henituse — tokoh antagonis minor dalam novel fantasy yang pernah ia baca. Dengan pengetahuan plot novel tersebut, Cale berencana mengumpulkan kekuatan kuno, membangun pasukan setia, dan pensiun dini.
+        </p>
+        <p class="synopsis-body reveal delay-3">
+          Namun rencana sederhana itu membawanya ke tengah konflik antar kerajaan, ancaman sang penjahat utama "White Star", dan takdir yang terus memaksanya menjadi pahlawan — meski ia hanya ingin tidur-tiduran.
+        </p>
+        <div class="mt-3 reveal delay-4">
+          <span class="tag-pill">Fantasy</span><span class="tag-pill">Isekai</span>
+          <span class="tag-pill">Action</span><span class="tag-pill">Adventure</span>
+          <span class="tag-pill">Comedy</span><span class="tag-pill">Drama</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ANCIENT POWERS (Bootstrap Row/Col) ═══ -->
+<section class="bg-powers py-5" id="powers" style="padding-top:5rem!important;padding-bottom:5rem!important;">
+  <div class="container py-4">
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">Kekuatan Kuno</span>
+      <h2 class="section-title fs-1 mb-2">Ancient <span>Powers</span></h2>
+      <p class="fst-italic mt-2" style="color:var(--text-muted-c);font-size:1rem;">Jiwa-jiwa purba yang memilih Cale sebagai pewaris mereka</p>
+      <div class="section-rule mt-3"><span>◆</span></div>
+    </div>
+    <div class="row g-1">
+      <div class="col-md-6 col-lg-4 reveal delay-1">
+        <div class="card power-card h-100 p-4">
+          <div class="power-glow"></div>
+          <div class="power-num">01</div>
+          <div class="fs-2 my-2">🛡️</div>
+          <div class="power-name mb-1">Indestructible Shield</div>
+          <div class="power-user mb-3">Cale Henituse</div>
+          <div class="power-desc">Perisai yang tak bisa dihancurkan dari jiwa kuno Tujuh Warna Batu Mulia. Semakin banyak terluka, semakin kuat tamengnya.</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal delay-2">
+        <div class="card power-card h-100 p-4">
+          <div class="power-glow"></div>
+          <div class="power-num">02</div>
+          <div class="fs-2 my-2">🌬️</div>
+          <div class="power-name mb-1">Sound of the Wind</div>
+          <div class="power-user mb-3">Cale Henituse</div>
+          <div class="power-desc">Kecepatan angin yang melampaui batas manusia biasa. Suara langkah kaki yang menghilang bersama hembusan angin purba.</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal delay-3">
+        <div class="card power-card h-100 p-4">
+          <div class="power-glow"></div>
+          <div class="power-num">03</div>
+          <div class="fs-2 my-2">👁️</div>
+          <div class="power-name mb-1">Dominating Aura</div>
+          <div class="power-user mb-3">Cale Henituse</div>
+          <div class="power-desc">Aura dominasi yang memancarkan tekanan luar biasa. Jiwa-jiwa lemah akan luluh hanya dengan bertatapan mata.</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal delay-4">
+        <div class="card power-card h-100 p-4">
+          <div class="power-glow"></div>
+          <div class="power-num">04</div>
+          <div class="fs-2 my-2">⚡</div>
+          <div class="power-name mb-1">Sword of Disasters</div>
+          <div class="power-user mb-3">Choi Han</div>
+          <div class="power-desc">Pedang yang mengandung kekuatan kegelapan. Diperkuat oleh latihan tanpa henti di hutan terkutuk selama bertahun-tahun.</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal delay-5">
+        <div class="card power-card h-100 p-4">
+          <div class="power-glow"></div>
+          <div class="power-num">05</div>
+          <div class="fs-2 my-2">🐉</div>
+          <div class="power-name mb-1">Dragon Breath</div>
+          <div class="power-user mb-3">Raon Miru</div>
+          <div class="power-desc">Nafas naga sejati yang menghancurkan segala hal. Raon memiliki potensi yang melebihi semua naga sebelumnya.</div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 reveal delay-1">
+        <div class="card power-card h-100 p-4">
+          <div class="power-glow"></div>
+          <div class="power-num">06</div>
+          <div class="fs-2 my-2">🌑</div>
+          <div class="power-name mb-1">Embracing the Darkness</div>
+          <div class="power-user mb-3">Cale Henituse</div>
+          <div class="power-desc">Kekuatan kegelapan kuno yang menelan segalanya. Lahir dari jiwa paling tua dan paling gelap yang pernah ada di dunia ini.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CHARACTERS (Bootstrap Cards) ═══ -->
+<section class="bg-chars py-5" id="characters" style="padding-top:5rem!important;padding-bottom:5rem!important;">
+  <div class="container py-4">
+    <div class="text-center mb-5 reveal">
+      <span class="section-label">Para Sekutu</span>
+      <h2 class="section-title fs-1 mb-2">Orang-orang di Sekitar <span>Cale</span></h2>
+      <p class="fst-italic mt-2" style="color:var(--text-muted-c);font-size:1rem;">Mereka yang secara sukarela — atau terpaksa — bergabung dalam perjalanan epik ini</p>
+      <div class="section-rule mt-3"><span>◆</span></div>
+    </div>
+    <div class="row g-4">
+
+      <!-- Cale -->
+      <div class="col-md-4 reveal delay-1">
+        <div class="card char-card h-100">
+          <div class="char-visual cale">
+            <div class="char-rune">C</div>
+            <div class="char-emoji">🟥</div>
+            <span class="badge char-badge-bs position-absolute top-0 end-0 m-3 py-2 px-3">Protagonist</span>
+          </div>
+          <div class="char-sep"></div>
+          <div class="card-body px-4 pb-4 pt-1">
+            <h5 class="char-name mb-1">Cale Henituse</h5>
+            <p class="char-role mb-3">"Si Pemalas yang Terpaksa Jadi Pahlawan"</p>
+            <p class="char-desc-text mb-3">Kim Rok Soo yang menjadi Cale Henituse. Berambut merah khas Henituse, bermata biru lautan. Ingin pensiun muda tapi selalu berakhir mengorbankan diri.</p>
+            <div class="d-flex align-items-center gap-2 mb-2"><span class="stat-label-c">Kekuatan</span><div class="stat-track"><div class="stat-fill" data-w=".72"></div></div><span class="stat-val-c">72</span></div>
+            <div class="d-flex align-items-center gap-2 mb-2"><span class="stat-label-c">Strategi</span><div class="stat-track"><div class="stat-fill" data-w=".98"></div></div><span class="stat-val-c">98</span></div>
+            <div class="d-flex align-items-center gap-2"><span class="stat-label-c">Keberanian</span><div class="stat-track"><div class="stat-fill" data-w=".95"></div></div><span class="stat-val-c">95</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Raon -->
+      <div class="col-md-4 reveal delay-2">
+        <div class="card char-card h-100">
+          <div class="char-visual raon">
+            <div class="char-rune">R</div>
+            <div class="char-emoji">🐉</div>
+            <span class="badge char-badge-bs position-absolute top-0 end-0 m-3 py-2 px-3">Naga Terhebat</span>
+          </div>
+          <div class="char-sep"></div>
+          <div class="card-body px-4 pb-4 pt-1">
+            <h5 class="char-name mb-1">Raon Miru</h5>
+            <p class="char-role mb-3">"Naga Hitam Terhebat & Perkasa di Usia 6 Tahun"</p>
+            <p class="char-desc-text mb-3">Naga hitam muda berusia 6 tahun yang bergabung dengan Cale. Sangat suka pie apel buatan Chef Hans dan sering memanggil Cale sebagai "ayah yang hebat".</p>
+            <div class="d-flex align-items-center gap-2 mb-2"><span class="stat-label-c">Kekuatan</span><div class="stat-track"><div class="stat-fill" data-w=".90"></div></div><span class="stat-val-c">90</span></div>
+            <div class="d-flex align-items-center gap-2 mb-2"><span class="stat-label-c">Sihir</span><div class="stat-track"><div class="stat-fill" data-w=".99"></div></div><span class="stat-val-c">99</span></div>
+            <div class="d-flex align-items-center gap-2"><span class="stat-label-c">Kelucuan</span><div class="stat-track"><div class="stat-fill" data-w="1.0"></div></div><span class="stat-val-c">100</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Choi Han -->
+      <div class="col-md-4 reveal delay-3">
+        <div class="card char-card h-100">
+          <div class="char-visual han">
+            <div class="char-rune">H</div>
+            <div class="char-emoji">⚔️</div>
+            <span class="badge char-badge-bs position-absolute top-0 end-0 m-3 py-2 px-3">Master Pedang</span>
+          </div>
+          <div class="char-sep"></div>
+          <div class="card-body px-4 pb-4 pt-1">
+            <h5 class="char-name mb-1">Choi Han</h5>
+            <p class="char-role mb-3">"Pedang Terkuat dari Dunia Lain"</p>
+            <p class="char-desc-text mb-3">Master pedang dari Korea yang terjebak di dunia lain. Bertahan di hutan terkutuk bertahun-tahun. Kini menjadi pelindung setia keluarga Henituse.</p>
+            <div class="d-flex align-items-center gap-2 mb-2"><span class="stat-label-c">Pedang</span><div class="stat-track"><div class="stat-fill" data-w=".99"></div></div><span class="stat-val-c">99</span></div>
+            <div class="d-flex align-items-center gap-2 mb-2"><span class="stat-label-c">Kecepatan</span><div class="stat-track"><div class="stat-fill" data-w=".95"></div></div><span class="stat-val-c">95</span></div>
+            <div class="d-flex align-items-center gap-2"><span class="stat-label-c">Loyalitas</span><div class="stat-track"><div class="stat-fill" data-w="1.0"></div></div><span class="stat-val-c">100</span></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="bg-cta py-5" style="padding-top:6rem!important;padding-bottom:6rem!important;">
+  <div class="cta-bg"></div>
+  <div class="container text-center position-relative" style="z-index:1;">
+    <div class="section-rule justify-content-center mb-4"><span>◆</span></div>
+    <h2 class="cta-quote fs-1 mb-3 reveal">
+      "Aku tidak ingin menjadi pahlawan.<br>Aku hanya ingin <em>hidup dengan tenang</em>."
+    </h2>
+    <p class="cta-sub mb-5 reveal delay-1">
+      — Cale Henituse, yang kemudian menghancurkan 3 kerajaan, mengalahkan White Star,<br>dan tetap belum berhasil pensiun hingga hari ini.
+    </p>
+    <div class="d-flex gap-3 justify-content-center flex-wrap reveal delay-2">
+      <a href="#" class="btn btn-primary-cale">Buka Library Novel</a>
+      <a href="#synopsis" class="btn btn-outline-cale">Baca Synopsis</a>
+    </div>
+    <div class="section-rule justify-content-center mt-5"><span>◆</span></div>
+  </div>
+</section>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="py-5">
+  <div class="container text-center">
+    <div class="footer-brand fs-4 fw-bold mb-1">Henituse Guild</div>
+    <div class="footer-rule"></div>
+    <p class="footer-text mb-0">
+      © 2026 <span>434241104</span> — Landing Page Tugas Modul 5<br>
+      Berdasarkan novel <em>Trash of the Count's Family</em> karya <span>Yoo Ryeo Han</span>
+    </p>
+  </div>
+</footer>
+
+<!-- Bootstrap 5.3.8 JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script>
+  /* CURSOR */
+  const cur = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{ mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'; });
+  (function animRing(){ rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing); })();
+  document.querySelectorAll('a,button,.char-card,.power-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{ cur.style.width='20px';cur.style.height='20px';ring.style.width='55px';ring.style.height='55px'; });
+    el.addEventListener('mouseleave',()=>{ cur.style.width='12px';cur.style.height='12px';ring.style.width='36px';ring.style.height='36px'; });
+  });
+
+  /* NAVBAR */
+  const nav=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+
+  /* PARALLAX */
+  const heroBg=document.getElementById('heroBg');
+  window.addEventListener('scroll',()=>{ if(scrollY<innerHeight) heroBg.style.transform=`scale(1.06) translateY(${scrollY*.28}px)`; });
+
+  /* REVEAL */
+  const revObs=new IntersectionObserver(entries=>{ entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); }); },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+  /* STAT BARS */
+  const statObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      e.target.querySelectorAll('.stat-fill').forEach((bar,i)=>{ setTimeout(()=>{ bar.style.transform=`scaleX(${bar.dataset.w})`; },200+i*160); });
+      statObs.unobserve(e.target);
+    });
+  },{threshold:.4});
+  document.querySelectorAll('.char-card').forEach(c=>statObs.observe(c));
+
+  /* PARTICLES */
+  const pcEl=document.getElementById('particles');
+  const pcColors=['#8b0000','#c0392b','#ff2a2a','#c9a84c','#f0d080'];
+  function mkP(){
+    const p=document.createElement('div'); p.className='particle';
+    const sz=Math.random()*4+1,dur=Math.random()*12+8,del=Math.random()*8;
+    const drift=(Math.random()-.5)*200,col=pcColors[~~(Math.random()*5)];
+    p.style.cssText=`width:${sz}px;height:${sz}px;left:${Math.random()*100}%;bottom:0;background:${col};animation-duration:${dur}s;animation-delay:${del}s;--drift:${drift}px;box-shadow:0 0 ${sz*2}px ${col}`;
+    pcEl.appendChild(p);
+    setTimeout(()=>p.remove(),(dur+del)*1000);
+  }
+  for(let i=0;i<28;i++) mkP();
+  setInterval(mkP,650);
+</script>
+</body>
+</html>
