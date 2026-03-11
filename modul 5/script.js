@@ -1,35 +1,42 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const cur = document.getElementById('cursor');
-    const ring = document.getElementById('cursorRing');
-    let mx = 0, my = 0, rx = 0, ry = 0;
-    document.addEventListener('mousemove', e => 
-        { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
-    (function animRing() { rx += (mx - rx) * .12; ry += (my - ry) * .12; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animRing); })();
+    const cur = document.getElementById('cursor'), ring = document.getElementById('cursorRing');
+    let pos = { mx: 0, my: 0, rx: 0, ry: 0 };
 
-    const nav = document.getElementById('navbar');
-    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 60));
+    // 1. Gabungan Logika Kursor (Mouse & Ring)
+    document.addEventListener('mousemove', e => {
+        [pos.mx, pos.my] = [e.clientX, e.clientY];
+        cur.style.transform = `translate(${pos.mx}px, ${pos.my}px)`;
+    });
 
-    const revObs = new IntersectionObserver(entries => 
-        { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: .12 });
-    document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+    (function anim() {
+        pos.rx += (pos.mx - pos.rx) * 0.15;
+        pos.ry += (pos.my - pos.ry) * 0.15;
+        ring.style.transform = `translate(${pos.rx}px, ${pos.ry}px)`;
+        requestAnimationFrame(anim);
+    })();
 
-    const statObs = new IntersectionObserver(entries => {
+    // 2. Navbar & Reveal Observer (Digabung)
+    const obs = new IntersectionObserver(entries => {
         entries.forEach(e => {
-            if (!e.isIntersecting) return;
-            e.target.querySelectorAll('.stat-fill').forEach((bar, i) => 
-                { setTimeout(() => { bar.style.transform = `scaleX(${bar.dataset.w})`; }, 200 + i * 160); });
+            if (e.isIntersecting) {
+                e.target.classList.add('visible');
+                // Jalankan animasi bar jika yang terlihat adalah char-card
+                e.target.querySelectorAll('.stat-fill').forEach((b, i) => 
+                    setTimeout(() => b.style.transform = `scaleX(${b.dataset.w})`, 200 + i * 150));
+            }
         });
-    }, { threshold: .4 });
-    document.querySelectorAll('.char-card').forEach(c => statObs.observe(c));
+    }, { threshold: 0.2 });
 
-    /* Logic Partikel Sederhana */
-    const pcEl = document.getElementById('particles');
-    function mkP() {
-        const p = document.createElement('div'); p.className = 'particle';
-        const sz = Math.random() * 4 + 1;
-        p.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random() * 100}%;bottom:0;background:#8b0000;animation-duration:${Math.random() * 10 + 5}s;--drift:${(Math.random() - .5) * 200}px`;
-        pcEl.appendChild(p);
-        setTimeout(() => p.remove(), 15000);
-    }
-    setInterval(mkP, 800);
+    document.querySelectorAll('.reveal, .char-card').forEach(el => obs.observe(el));
+    window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60));
+
+    // 3. Sistem Partikel Ringkas
+    setInterval(() => {
+        const p = document.createElement('div');
+        const sz = Math.random() * 4 + 2;
+        p.className = 'particle';
+        p.style.cssText = `width:${sz}px;height:${sz}px;left:${Math.random()*100}%;bottom:0;background:#8b0000;animation-duration:${Math.random()*8+4}s;--drift:${(Math.random()-0.5)*150}px`;
+        document.getElementById('particles').appendChild(p);
+        setTimeout(() => p.remove(), 10000);
+    }, 800);
 });

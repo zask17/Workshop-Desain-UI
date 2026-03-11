@@ -52,3 +52,7 @@ body {
     transform: translateY(-10px);
     border-color: var(--gold);
 }
+
+img{
+    border-radius: 15px;
+}
