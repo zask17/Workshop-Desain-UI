@@ -8,7 +8,37 @@ body {
     font-family: 'Cormorant Garamond', serif;
     background-color: var(--dark);
     color: #e8d5c4;
+    overflow-x: hidden;
+    /* cursor: none; */
 }
+
+/* CUSTOM CURSOR */
+#cursor {
+    width: 8px;
+    height: 8px;
+    background: #c9a84c; /* gold biar cocok tema */
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9999;
+}
+
+#cursorRing {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #8b0000;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+}
+
 
 /* Navbar Bootstrap */
 .navbar {
@@ -41,6 +71,10 @@ body {
     box-shadow: 0 0 20px rgba(139, 0, 0, 0.6);
 }
 
+img{
+    border-radius: 15px;
+}
+
 .card-power {
     background: #1c1015;
     border: 1px solid rgba(201, 168, 76, 0.2);
@@ -53,6 +87,49 @@ body {
     border-color: var(--gold);
 }
 
-img{
+.power-card {
+    background: #1c1015;
+    border: none;
     border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+}
+
+/* garis animasi bawah */
+.power-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--crimson), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s;
+}
+
+.power-card:hover::after {
+    transform: scaleX(1);
+}
+
+/* hover naik + glow */
+.power-card:hover {
+    transform: translateY(-8px);
+    background: #2a1820;
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+}
+
+.power-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+}
+
+.power-desc {
+    font-size: 0.9rem;
+    color: #8a7060;
+    line-height: 1.6;
 }
