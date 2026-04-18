@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KimiaDasar — Struktur Atom & Ikatan Kimia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <ul class="nav-links">
+    <li><a href="#atom">Atom</a></li>
+    <li><a href="#ikatan">Ikatan</a></li>
+    <li><a href="#karbon">Karbon</a></li>
+    <li><a href="#artikel">Artikel</a></li>
+  </ul>
+  <span class="nav-logo">KimiaDasar</span>
+  <a href="#" class="nav-cta">Mulai Belajar</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#atom">Atom</a>
+  <a href="#ikatan">Ikatan</a>
+  <a href="#karbon">Karbon</a>
+  <a href="#artikel">Artikel</a>
+  <a href="#" class="btn-primary" style="text-align:center">Mulai Belajar</a>
+</div>
+
+<!-- HERO -->
+<section id="atom">
+  <div class="hero">
+    <div class="hero-text reveal">
+      <span class="hero-badge">⚗ Kimia Dasar</span>
+      <h1>Memahami Dunia dari Atom Terkecil</h1>
+      <p>Kimia dasar dimulai dari memahami struktur atom — unit terkecil dari suatu unsur kimia yang masih mempertahankan sifat dan identitas kimia unsur tersebut.</p>
+      <div class="hero-actions">
+        <a href="#ikatan" class="btn-primary">Mulai Eksplorasi</a>
+        <a href="#artikel" class="btn-ghost">Baca Artikel →</a>
+      </div>
+    </div>
+    <div class="hero-visual reveal reveal-delay">
+      <div class="browser-mockup">
+        <div class="browser-bar">
+          <div class="browser-dot dot-red"></div>
+          <div class="browser-dot dot-yellow"></div>
+          <div class="browser-dot dot-green"></div>
+          <span class="browser-url">kimiadasar.id/atom</span>
+        </div>
+        <div class="browser-content">
+          <svg viewBox="0 0 320 260" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <circle cx="160" cy="130" r="22" fill="#0a0a0a"/>
+            <!-- <text x="160" y="136" text-anchor="middle" fill="#fafaf8" font-size="11" font-family="DM Sans, sans-serif" font-weight="500">Neutron</text> -->
+            <text x="160" y="136" text-anchor="middle" fill="#fafaf8" font-size="11" font-family="DM Sans, sans-serif" font-weight="500"></text>
+            <ellipse cx="160" cy="130" rx="70" ry="28" fill="none" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <ellipse cx="160" cy="130" rx="110" ry="44" fill="none" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4,3" transform="rotate(60 160 130)"/>
+            <ellipse cx="160" cy="130" rx="110" ry="44" fill="none" stroke="#0a0a0a" stroke-width="1.5" stroke-dasharray="4,3" transform="rotate(-60 160 130)"/>
+            <circle class="electron e1" cx="230" cy="130" r="8" fill="#0a0a0a"/>
+            <circle class="electron e2" cx="90" cy="130" r="8" fill="#0a0a0a"/>
+            <circle class="electron e3" cx="160" cy="82" r="8" fill="#0a0a0a"/>
+            <text x="244" y="134" fill="#6b6b65" font-size="10" font-family="DM Sans, sans-serif">e⁻</text>
+            <text x="66" y="134" fill="#6b6b65" font-size="10" font-family="DM Sans, sans-serif">e⁻</text>
+            <text x="164" y="72" fill="#6b6b65" font-size="10" font-family="DM Sans, sans-serif">e⁻</text>
+          </svg>
+        </div>
+      </div>
+      <div class="geo-circle shape-1"></div>
+      <div class="geo-rect shape-2"></div>
+      <div class="geo-fill shape-3"></div>
+      <div class="geo-fill" style="position:absolute;width:12px;height:12px;border-radius:50%;top:0;right:90px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK BAND -->
+<section class="dark-band">
+  <h2 class="reveal">Kimia Ada di Mana-Mana</h2>
+  <p class="reveal">Dari air yang kita minum hingga udara yang kita hirup — semuanya tersusun atas atom dan ikatan kimia yang membentuk kehidupan sehari-hari.</p>
+  <div class="logo-strip reveal">
+    <div class="logo-pill" data-tooltip="Dua atom Hidrogen + satu Oksigen">H₂O</div>
+    <div class="logo-pill" data-tooltip="Satu Karbon + dua Oksigen">CO₂</div>
+    <div class="logo-pill" data-tooltip="Natrium + Klorida (Garam Dapur)">NaCl</div>
+    <div class="logo-pill" data-tooltip="Dua atom Oksigen">O₂</div>
+    <div class="logo-pill" data-tooltip="Satu Karbon + empat Hidrogen">CH₄</div>
+  </div>
+</section>
+
+<!-- STAT CARDS -->
+<section class="stats-section">
+  <div class="stats-inner">
+    <div class="stat-card reveal" data-count="118" data-suffix="">
+      <span class="stat-number">0</span>
+      <span class="stat-label">Unsur dalam Tabel Periodik</span>
+    </div>
+    <div class="stat-card reveal" data-count="4" data-suffix="">
+      <span class="stat-number">0</span>
+      <span class="stat-label">Ikatan Kovalen Karbon</span>
+    </div>
+    <div class="stat-card reveal" data-count="6" data-suffix="">
+      <span class="stat-number">0</span>
+      <span class="stat-label">Elektron Valensi Karbon</span>
+    </div>
+    <div class="stat-card reveal" data-count="99" data-suffix="%">
+      <span class="stat-number">0</span>
+      <span class="stat-label">Massa Atom ada di Inti</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE 1 -->
+<section class="section-pad" id="ikatan">
+  <div class="feature-row reveal">
+    <div class="feature-text">
+      <div class="gc-dot" style="position:relative;display:inline-block;margin-bottom:16px;"></div>
+      <h3>Struktur Atom yang Menakjubkan</h3>
+      <p>Atom terdiri dari tiga partikel subatomik utama yang menentukan sifat dan perilaku setiap unsur kimia di tabel periodik.</p>
+      <ul class="benefit-list">
+        <li>Proton — bermuatan positif, berada di inti atom</li>
+        <li>Neutron — tidak bermuatan, menstabilkan inti</li>
+        <li>Elektron — bermuatan negatif, mengelilingi inti</li>
+      </ul>
+      <div class="particle-tabs">
+        <button class="ptab active" data-particle="proton">Proton</button>
+        <button class="ptab" data-particle="neutron">Neutron</button>
+        <button class="ptab" data-particle="elektron">Elektron</button>
+      </div>
+      <div class="particle-info" id="particleInfo">
+        <strong>Proton (p⁺)</strong> — Partikel bermuatan positif di dalam inti atom. Jumlah proton menentukan nomor atom dan identitas unsur.
+      </div>
+    </div>
+    <div class="feature-visual">
+      <div class="geo-composition comp1">
+        <div class="gc-black-sq a" style="display:flex;align-items:center;justify-content:center;">
+          <span style="color:#fafaf8;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;position:absolute;">p⁺</span>
+        </div>
+        <div class="gc-white-sq b" style="display:flex;align-items:center;justify-content:center;">
+          <span style="color:#0a0a0a;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:500;position:absolute;">n⁰</span>
+        </div>
+        <div class="gc-circle-outline c"></div>
+        <div class="gc-tri d"></div>
+        <div class="gc-dot e"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURE 2 -->
+  <div class="feature-row reverse reveal" id="karbon">
+    <div class="feature-visual">
+      <div class="black-panel">
+        <svg viewBox="0 0 280 220" xmlns="http://www.w3.org/2000/svg" width="80%" style="position:relative;z-index:1;">
+          <circle cx="140" cy="110" r="26" fill="#fafaf8"/>
+          <text x="140" y="116" text-anchor="middle" fill="#0a0a0a" font-size="13" font-family="DM Sans, sans-serif" font-weight="600">C</text>
+          <line x1="140" y1="84" x2="140" y2="38" stroke="#fafaf8" stroke-width="2.5"/>
+          <line x1="140" y1="136" x2="140" y2="182" stroke="#fafaf8" stroke-width="2.5"/>
+          <line x1="114" y1="110" x2="60" y2="110" stroke="#fafaf8" stroke-width="2.5"/>
+          <line x1="166" y1="110" x2="220" y2="110" stroke="#fafaf8" stroke-width="2.5"/>
+          <circle cx="140" cy="26" r="18" fill="rgba(255,255,255,0.15)" stroke="#fafaf8" stroke-width="1.5"/>
+          <text x="140" y="31" text-anchor="middle" fill="#fafaf8" font-size="12" font-family="DM Sans, sans-serif">H</text>
+          <circle cx="140" cy="194" r="18" fill="rgba(255,255,255,0.15)" stroke="#fafaf8" stroke-width="1.5"/>
+          <text x="140" y="199" text-anchor="middle" fill="#fafaf8" font-size="12" font-family="DM Sans, sans-serif">H</text>
+          <circle cx="48" cy="110" r="18" fill="rgba(255,255,255,0.15)" stroke="#fafaf8" stroke-width="1.5"/>
+          <text x="48" y="115" text-anchor="middle" fill="#fafaf8" font-size="12" font-family="DM Sans, sans-serif">H</text>
+          <circle cx="232" cy="110" r="18" fill="rgba(255,255,255,0.15)" stroke="#fafaf8" stroke-width="1.5"/>
+          <text x="232" y="115" text-anchor="middle" fill="#fafaf8" font-size="12" font-family="DM Sans, sans-serif">H</text>
+        </svg>
+      </div>
+    </div>
+    <div class="feature-text">
+      <div class="gc-dot" style="position:relative;display:inline-block;margin-bottom:16px;"></div>
+      <h3>Ikatan Kovalen pada Karbon</h3>
+      <p>Karbon (C) istimewa karena mampu membentuk 4 ikatan kovalen sekaligus. Inilah yang menjadikan karbon sebagai dasar dari seluruh kehidupan organik di bumi.</p>
+      <div class="molecule-switcher">
+        <span class="mol-label">Contoh Molekul:</span>
+        <div class="mol-buttons">
+          <button class="mol-btn active" data-mol="CH4">CH₄</button>
+          <button class="mol-btn" data-mol="CO2">CO₂</button>
+          <button class="mol-btn" data-mol="H2O">H₂O</button>
+        </div>
+      </div>
+      <div class="mol-desc" id="molDesc">
+        <strong>Metana (CH₄)</strong> — Gas alam yang terbentuk dari 1 karbon dan 4 hidrogen. Contoh ikatan kovalen tunggal karbon yang paling sederhana.
+      </div>
+      <a href="#artikel" class="btn-secondary" style="margin-top:24px;display:inline-block;">Pelajari Lebih Lanjut</a>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section class="social-section">
+  <div class="case-grid reveal">
+    <div class="case-text">
+      <h3>Mengapa Belajar Kimia Dasar Itu Penting?</h3>
+      <p>Pemahaman tentang struktur atom dan ikatan kimia membuka pintu ke berbagai bidang ilmu — dari kedokteran, farmasi, teknik material, hingga ilmu lingkungan.</p>
+      <p class="small">Kimia dasar adalah fondasi ilmu pengetahuan alam. Dengan memahami bagaimana atom berinteraksi, kita bisa merancang obat baru, material lebih kuat, dan solusi energi bersih untuk masa depan.</p>
+      <div class="case-person">
+        <div class="person-avatar"></div>
+        <span class="person-info">Dr. Anisa Pratiwi, Dosen Kimia FMIPA</span>
+      </div>
+    </div>
+    <div class="case-image" style="display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg" width="85%">
+        <rect x="10" y="10" width="50" height="50" rx="3" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
+        <text x="35" y="32" text-anchor="middle" fill="#fafaf8" font-size="9" font-family="DM Sans" opacity="0.6">1</text>
+        <text x="35" y="46" text-anchor="middle" fill="#fafaf8" font-size="18" font-family="DM Sans" font-weight="600">H</text>
+        <text x="35" y="56" text-anchor="middle" fill="#fafaf8" font-size="8" font-family="DM Sans" opacity="0.6">Hidrogen</text>
+        <rect x="70" y="10" width="50" height="50" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="95" y="32" text-anchor="middle" fill="#fafaf8" font-size="9" font-family="DM Sans" opacity="0.6">6</text>
+        <text x="95" y="46" text-anchor="middle" fill="#fafaf8" font-size="18" font-family="DM Sans" font-weight="600">C</text>
+        <text x="95" y="56" text-anchor="middle" fill="#fafaf8" font-size="8" font-family="DM Sans" opacity="0.6">Karbon</text>
+        <rect x="130" y="10" width="50" height="50" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="155" y="32" text-anchor="middle" fill="#fafaf8" font-size="9" font-family="DM Sans" opacity="0.6">8</text>
+        <text x="155" y="46" text-anchor="middle" fill="#fafaf8" font-size="18" font-family="DM Sans" font-weight="600">O</text>
+        <text x="155" y="56" text-anchor="middle" fill="#fafaf8" font-size="8" font-family="DM Sans" opacity="0.6">Oksigen</text>
+        <rect x="190" y="10" width="50" height="50" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="215" y="32" text-anchor="middle" fill="#fafaf8" font-size="9" font-family="DM Sans" opacity="0.6">11</text>
+        <text x="215" y="46" text-anchor="middle" fill="#fafaf8" font-size="18" font-family="DM Sans" font-weight="600">Na</text>
+        <text x="215" y="56" text-anchor="middle" fill="#fafaf8" font-size="8" font-family="DM Sans" opacity="0.6">Natrium</text>
+        <rect x="10" y="70" width="50" height="50" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="35" y="92" text-anchor="middle" fill="#fafaf8" font-size="9" font-family="DM Sans" opacity="0.6">7</text>
+        <text x="35" y="106" text-anchor="middle" fill="#fafaf8" font-size="18" font-family="DM Sans" font-weight="600">N</text>
+        <text x="35" y="116" text-anchor="middle" fill="#fafaf8" font-size="8" font-family="DM Sans" opacity="0.6">Nitrogen</text>
+        <rect x="70" y="70" width="50" height="50" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="95" y="92" text-anchor="middle" fill="#fafaf8" font-size="9" font-family="DM Sans" opacity="0.6">17</text>
+        <text x="95" y="106" text-anchor="middle" fill="#fafaf8" font-size="18" font-family="DM Sans" font-weight="600">Cl</text>
+        <text x="95" y="116" text-anchor="middle" fill="#fafaf8" font-size="8" font-family="DM Sans" opacity="0.6">Klorin</text>
+        <rect x="130" y="70" width="50" height="50" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="155" y="92" text-anchor="middle" fill="#fafaf8" font-size="9" font-family="DM Sans" opacity="0.6">19</text>
+        <text x="155" y="106" text-anchor="middle" fill="#fafaf8" font-size="18" font-family="DM Sans" font-weight="600">K</text>
+        <text x="155" y="116" text-anchor="middle" fill="#fafaf8" font-size="8" font-family="DM Sans" opacity="0.6">Kalium</text>
+        <rect x="190" y="70" width="50" height="50" rx="3" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+        <text x="215" y="92" text-anchor="middle" fill="#fafaf8" font-size="9" font-family="DM Sans" opacity="0.6">20</text>
+        <text x="215" y="106" text-anchor="middle" fill="#fafaf8" font-size="18" font-family="DM Sans" font-weight="600">Ca</text>
+        <text x="215" y="116" text-anchor="middle" fill="#fafaf8" font-size="8" font-family="DM Sans" opacity="0.6">Kalsium</text>
+        <text x="130" y="165" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="10" font-family="DM Sans">Tabel Periodik Unsur</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- PULL QUOTE -->
+<section class="testimonial-section">
+  <p class="pull-quote reveal">"Jika kamu ingin memahami alam semesta, pelajarilah atom — karena dari sanalah segalanya bermula."</p>
+  <div class="quote-avatar reveal"></div>
+  <div class="quote-author reveal">
+    <strong>Prof. Budi Santoso</strong>
+    Guru Besar Kimia, Universitas Indonesia
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section" id="artikel">
+  <div class="blog-section-inner">
+    <div class="section-header reveal">
+      <h2>Artikel Kimia Terpilih</h2>
+      <p>Pelajari konsep-konsep kimia dasar melalui artikel yang mudah dipahami, dari struktur atom hingga ikatan kimia dalam kehidupan sehari-hari.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-card-img" style="display:flex;align-items:center;justify-content:center;background:#0a0a0a;">
+          <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" width="70%">
+            <circle cx="100" cy="60" r="18" fill="rgba(255,255,255,0.9)"/>
+            <text x="100" y="65" text-anchor="middle" fill="#0a0a0a" font-size="14" font-family="DM Sans" font-weight="700">H</text>
+            <ellipse cx="100" cy="60" rx="55" ry="22" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-dasharray="3,2"/>
+            <ellipse cx="100" cy="60" rx="85" ry="34" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-dasharray="3,2" transform="rotate(50 100 60)"/>
+            <circle cx="155" cy="60" r="6" fill="rgba(255,255,255,0.8)"/>
+            <circle cx="100" cy="26" r="6" fill="rgba(255,255,255,0.8)"/>
+          </svg>
+        </div>
+        <div class="blog-card-body">
+          <span class="card-tag">Atom</span>
+          <h4>Mengenal Atom Hidrogen: Atom Paling Sederhana di Alam Semesta</h4>
+          <p>Hidrogen adalah unsur paling ringan dan paling melimpah. Hanya satu proton dan satu elektron — namun menjadi bahan bakar bintang.</p>
+          <a href="#" class="learn-more">Baca Selengkapnya →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-card-img" style="display:flex;align-items:center;justify-content:center;background:#0a0a0a;">
+          <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" width="70%">
+            <circle cx="70" cy="60" r="22" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            <text x="70" y="65" text-anchor="middle" fill="#fafaf8" font-size="16" font-family="DM Sans" font-weight="600">H</text>
+            <line x1="92" y1="60" x2="108" y2="60" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
+            <circle cx="130" cy="60" r="22" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.6)" stroke-width="1.5"/>
+            <text x="130" y="65" text-anchor="middle" fill="#fafaf8" font-size="16" font-family="DM Sans" font-weight="600">H</text>
+            <text x="100" y="100" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="DM Sans">Ikatan Kovalen</text>
+          </svg>
+        </div>
+        <div class="blog-card-body">
+          <span class="card-tag">Ikatan</span>
+          <h4>Ikatan Kovalen: Ketika Atom Berbagi Elektron</h4>
+          <p>Ikatan kovalen terbentuk ketika dua atom saling berbagi pasangan elektron. Inilah dasar terbentuknya molekul seperti H₂O dan O₂.</p>
+          <a href="#" class="learn-more">Baca Selengkapnya →</a>
+        </div>
+      </div>
+      <div class="blog-card reveal">
+        <div class="blog-card-img" style="display:flex;align-items:center;justify-content:center;background:#0a0a0a;">
+          <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" width="70%">
+            <circle cx="40" cy="60" r="18" fill="rgba(255,255,255,0.9)"/>
+            <text x="40" y="65" text-anchor="middle" fill="#0a0a0a" font-size="13" font-family="DM Sans" font-weight="700">C</text>
+            <line x1="58" y1="60" x2="82" y2="60" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
+            <circle cx="100" cy="60" r="18" fill="rgba(255,255,255,0.9)"/>
+            <text x="100" y="65" text-anchor="middle" fill="#0a0a0a" font-size="13" font-family="DM Sans" font-weight="700">C</text>
+            <line x1="118" y1="60" x2="142" y2="60" stroke="rgba(255,255,255,0.7)" stroke-width="2.5"/>
+            <circle cx="160" cy="60" r="18" fill="rgba(255,255,255,0.9)"/>
+            <text x="160" y="65" text-anchor="middle" fill="#0a0a0a" font-size="13" font-family="DM Sans" font-weight="700">C</text>
+            <text x="100" y="105" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="DM Sans">Rantai Karbon (Propana)</text>
+          </svg>
+        </div>
+        <div class="blog-card-body">
+          <span class="card-tag">Karbon</span>
+          <h4>Rantai Karbon: Fondasi Kimia Organik dalam Kehidupan</h4>
+          <p>Karbon mampu berikatan dengan sesamanya membentuk rantai panjang. Inilah mengapa ada jutaan senyawa organik yang menyusun makhluk hidup.</p>
+          <a href="#" class="learn-more">Baca Selengkapnya →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo">KimiaDasar</span>
+        <h4>Artikel Terbaru</h4>
+        <h4 style="font-size:16px;font-family:'DM Serif Display',Georgia,serif;font-weight:400;margin:4px 0 10px;color:rgba(255,255,255,0.9)">Siap Memulai Belajar Kimia?</h4>
+        <p>Platform belajar kimia dasar yang dirancang untuk pelajar SMA dan mahasiswa. Materi disusun sistematis, mulai dari struktur atom, ikatan kimia, hingga reaksi kimia sederhana.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Materi</h5>
+        <ul>
+          <li><a href="#">Struktur Atom</a></li>
+          <li><a href="#">Tabel Periodik</a></li>
+          <li><a href="#">Ikatan Kimia</a></li>
+          <li><a href="#">Ikatan Karbon</a></li>
+          <li><a href="#">Reaksi Kimia</a></li>
+          <li><a href="#">Kimia Organik</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Tentang</h5>
+        <ul>
+          <li><a href="#">Tentang Kami</a></li>
+          <li><a href="#">Tim Pengajar</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Kontak</a></li>
+          <li><a href="#">Karir</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2024 — KimiaDasar</span>
+      <div>
+        <a href="#">Privasi</a>
+        <a href="#">Syarat & Ketentuan</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" id="backTop" aria-label="Kembali ke atas">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>
