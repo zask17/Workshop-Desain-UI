@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chemistry Explorer - API Project</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #27ae60;
+            --accent: #e67e22;
+            --light: #f4f7f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            width: 100%;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin-top: -30px;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 2rem;
+        }
+
+        input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--secondary);
+        }
+
+        button {
+            padding: 12px 24px;
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.2s, background 0.3s;
+        }
+
+        button:hover {
+            background-color: #219150;
+            transform: translateY(-2px);
+        }
+
+        #result {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .card {
+            border-left: 5px solid var(--secondary);
+            padding: 1.5rem;
+            background: #fff;
+        }
+
+        .compound-img {
+            display: block;
+            margin: 1rem auto;
+            max-width: 200px;
+            border-radius: 8px;
+            background: #eee;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .info-item {
+            background: #f9f9f9;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .info-label {
+            font-size: 0.8rem;
+            color: #7f8c8d;
+            display: block;
+        }
+
+        .info-value {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .loader {
+            display: none;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--accent);
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🧪 Chemistry Explorer</h1>
+    <p>Example: H2O, Caffeine, Gold</p>
+</header>
+
+<div class="container">
+    <div class="search-box">
+        <input type="text" id="chemInput" placeholder="Masukkan nama senyawa/unsur...">
+        <button onclick="fetchChemistryData()">Cari</button>
+    </div>
+
+    <div id="loader" class="loader"></div>
+
+    <div id="result">
+        <div class="card">
+            <h2 id="compName" style="margin-top:0; color: var(--secondary);">N/A</h2>
+            <img id="compImg" class="compound-img" src="" alt="Struktur Kimia">
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label">Formula Molekul</span>
+                    <span id="formula" class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Berat Molekul</span>
+                    <span id="weight" class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">IUPAC Name</span>
+                    <span id="iupac" class="info-value">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">CID (PubChem ID)</span>
+                    <span id="cid" class="info-value">-</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    async function fetchChemistryData() {
+        const input = document.getElementById('chemInput').value.trim();
+        const resultDiv = document.getElementById('result');
+        const loader = document.getElementById('loader');
+
+        if (!input) {
+            alert("Harap masukkan nama unsur atau senyawa!");
+            return;
+        }
+
+        // Reset UI
+        resultDiv.style.display = 'none';
+        loader.style.display = 'block';
+
+        try {
+            // Step 1: Ambil CID (Compound ID) dari nama
+            const cidResponse = await fetch(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${input}/cids/JSON`);
+            const cidData = await cidResponse.json();
+
+            if (!cidData.IdentifierList) {
+                throw new Error("Senyawa tidak ditemukan.");
+            }
+
+            const cid = cidData.IdentifierList.CID[0];
+
+            // Step 2: Ambil Properti Data menggunakan CID
+            const detailResponse = await fetch(`https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cid}/property/MolecularFormula,MolecularWeight,IUPACName/JSON`);
+            const detailData = await detailResponse.json();
+            const props = detailData.PropertyTable.Properties[0];
+
+            // Update UI
+            document.getElementById('compName').innerText = input.toUpperCase();
+            document.getElementById('formula').innerText = props.MolecularFormula;
+            document.getElementById('weight').innerText = props.MolecularWeight + " g/mol";
+            document.getElementById('iupac').innerText = props.IUPACName || "N/A";
+            document.getElementById('cid').innerText = props.CID;
+            
+            // Ambil gambar struktur 2D
+            document.getElementById('compImg').src = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cid}/PNG`;
+
+            loader.style.display = 'none';
+            resultDiv.style.display = 'block';
+
+        } catch (error) {
+            loader.style.display = 'none';
+            alert("Error: " + error.message);
+        }
+    }
+
+    // Fitur Enter untuk mencari
+    document.getElementById('chemInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') fetchChemistryData();
+    });
+</script>
+
+</body>
+</html>
