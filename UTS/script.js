@@ -77,21 +77,6 @@ document.querySelectorAll('.mol-btn').forEach(btn => {
   });
 });
 
-/* ── RIPPLE on .btn-primary ── */
-const rippleStyle = document.createElement('style');
-rippleStyle.textContent = `@keyframes ripple { to { transform:scale(3.8); opacity:0; } }`;
-document.head.appendChild(rippleStyle);
-
-document.querySelectorAll('.btn-primary').forEach(btn => {
-  btn.addEventListener('click', e => {
-    const r = btn.getBoundingClientRect();
-    const s = Math.max(r.width, r.height);
-    const el = document.createElement('span');
-    el.style.cssText = `position:absolute;width:${s}px;height:${s}px;left:${e.clientX-r.left-s/2}px;top:${e.clientY-r.top-s/2}px;background:rgba(255,255,255,0.22);border-radius:50%;transform:scale(0);animation:ripple .55s linear;pointer-events:none;`;
-    btn.appendChild(el);
-    setTimeout(() => el.remove(), 600);
-  });
-});
 
 /* ── ACTIVE NAV LINK ── */
 const sections = document.querySelectorAll('section[id]');
