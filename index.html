@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KimiaDasar — Struktur Atom & Ikatan Kimia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ══ NAV ══ -->
+  <nav id="navbar">
+    <ul class="nav-links">
+      <li><a href="#atom">Atom</a></li>
+      <li><a href="#ikatan">Ikatan</a></li>
+      <li><a href="#karbon">Karbon</a></li>
+      <li><a href="#artikel">Artikel</a></li>
+    </ul>
+    <span class="nav-logo">Kimia Dasar</span>
+    <a href="#" class="nav-cta">Mulai Belajar</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#atom">Atom</a>
+    <a href="#ikatan">Ikatan</a>
+    <a href="#karbon">Karbon</a>
+    <a href="#artikel">Artikel</a>
+    <a href="#" class="nav-cta">Mulai Belajar</a>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero-section" id="atom">
+    <div class="hero-inner">
+      <!-- Left: text -->
+      <div class="hero-text reveal">
+        <h1>Memahami Dunia dari Atom Terkecil</h1>
+        <p>Kimia dasar dimulai dari memahami APA ITU ATOM —
+          unit terkecil dari suatu unsur kimia yang masih mempertahankan sifat dan identitas kimia unsur tersebut.</p>
+        <a href="#ikatan" class="btn-primary">Mulai Eksplorasi</a>
+      </div>
+
+      <!-- Right: browser + geometric decorations -->
+      <div class="hero-visual reveal reveal-delay">
+        <!-- Browser mockup -->
+        <div class="browser-mockup">
+          <div class="browser-bar">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+          </div>
+          <div class="browser-content">
+            <svg viewBox="0 0 320 240" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+              <circle cx="160" cy="120" r="20" fill="#0a0a0a" />
+              <ellipse cx="160" cy="120" rx="68" ry="26" fill="none" stroke="#0a0a0a" stroke-width="1.5"
+                stroke-dasharray="4,3" />
+              <ellipse cx="160" cy="120" rx="105" ry="42" fill="none" stroke="#0a0a0a" stroke-width="1.5"
+                stroke-dasharray="4,3" transform="rotate(60 160 120)" />
+              <ellipse cx="160" cy="120" rx="105" ry="42" fill="none" stroke="#0a0a0a" stroke-width="1.5"
+                stroke-dasharray="4,3" transform="rotate(-60 160 120)" />
+              <circle class="electron e1" cx="228" cy="120" r="7" fill="#0a0a0a" />
+              <circle class="electron e2" cx="92" cy="120" r="7" fill="#0a0a0a" />
+              <circle class="electron e3" cx="160" cy="50" r="7" fill="#0a0a0a" />
+              <text x="240" y="124" fill="#6b6b65" font-size="9" font-family="DM Sans,sans-serif">e⁻</text>
+              <text x="70" y="124" fill="#6b6b65" font-size="9" font-family="DM Sans,sans-serif">e⁻</text>
+              <text x="155" y="40" fill="#6b6b65" font-size="9" font-family="DM Sans,sans-serif">e⁻</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Geometric decorations 1st -->
+        <svg class="hero-geo-container" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <circle class="geo-circle" cx="500" cy="180" r="75" fill="none" stroke-width="2.5" />
+
+          <polygon class="geo-tri geo-tri-top" points="70,300 210,300 210,150" fill="none" stroke-width="2.5" />
+          <polygon class="geo-tri geo-tri-bottom" points="70,300 70,440 210,440" fill="#f0efea" stroke-width="2.5" />
+          <polygon class="geo-tri geo-tri-bottom" points="210,440 210,560 350,560" fill="#f0efea" stroke-width="2.5" />
+
+          <circle class="geo-circle" cx="0" cy="500" r="65" fill="#f0efea" stroke-width="2.5" />
+
+          <circle class="geo-circle" cx="465" cy="700" r="15" fill="#f0efea" stroke-width="2.5" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ DARK BAND (The Publication) ══ -->
+  <section class="dark-band">
+    <div class="dark-band-inner">
+      <h2 class="reveal">Kimia Ada di Mana-Mana</h2>
+      <p class="reveal">Dari air yang kita minum hingga udara yang kita hirup — semuanya tersusun atas atom dan ikatan
+        kimia yang membentuk kehidupan sehari-hari.</p>
+      <div class="logo-strip reveal">
+        <div class="logo-pill" data-tooltip="Dua atom Hidrogen + satu Oksigen">H₂O</div>
+        <div class="logo-pill" data-tooltip="Satu Karbon + dua Oksigen">CO₂</div>
+        <div class="logo-pill" data-tooltip="Natrium + Klorida (Garam Dapur)">NaCl</div>
+        <div class="logo-pill" data-tooltip="Dua atom Oksigen">O₂</div>
+        <div class="logo-pill" data-tooltip="Satu Karbon + empat Hidrogen">CH₄</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FEATURE 1 — text left, geo art right ══ -->
+  <section class="feature-section" id="ikatan" style="position: relative;">
+    <div class="feature-inner reveal">
+      <div class="feature-text">
+        <h3>Struktur Atom yang Menakjubkan</h3>
+        <p>Atom terdiri dari tiga partikel subatomik utama yang menentukan sifat dan perilaku setiap unsur kimia di
+          tabel periodik.</p>
+        <ul class="benefit-list">
+          <li>Proton — bermuatan positif, berada di inti atom</li>
+          <li>Neutron — tidak bermuatan, menstabilkan inti</li>
+          <li>Elektron — bermuatan negatif, mengelilingi inti</li>
+        </ul>
+        <div class="particle-tabs">
+          <button class="ptab active" data-particle="proton">Proton</button>
+          <button class="ptab" data-particle="neutron">Neutron</button>
+          <button class="ptab" data-particle="elektron">Elektron</button>
+        </div>
+        <div class="particle-info" id="particleInfo">
+          <strong>Proton (p⁺)</strong> — Partikel bermuatan positif di dalam inti atom. Jumlah proton menentukan nomor
+          atom dan identitas unsur.
+        </div>
+      </div>
+    </div>
+
+    <!-- Geometric decorations 2 -->
+    <div class="feature-geo-overlay">
+      <svg width="100%" height="120%" viewBox="0 0 520 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="geo-circle" cx="0" cy="50" r="20" fill="#0a0a0a" />
+
+        <polygon class="geo-tri geo-tri-top" points="500,150 500,270 370,270" fill="#f0efea" stroke-width="2.5" />
+
+        <rect class="geo-squere" x="170" y="80" width="200" height="200" fill="#0a0a0a" />
+        <circle class="geo-circle" cx="600" cy="240" r="50" fill="none" stroke="#0a0a0a" stroke-width="3" />
+
+        <polygon class="geo-tri geo-tri-bottom" points="370,270 370,410 510,410" fill="#f0efea" stroke-width="2.5" />
+        <polygon class="geo-tri geo-tri-bottom" points="510,410 510,530 650,530" fill="black" stroke-width="2.5" />
+
+        <circle class="geo-circle" cx="280" cy="380" r="80" fill="none" stroke="#0a0a0a" stroke-width="3.5" />
+
+        <circle class="geo-circle" cx="700" cy="510" r="20" fill="#0a0a0a" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══ FEATURE 2 — full-width black panel left, text right ══ -->
+  <section class="feature2-section" id="karbon">
+    <div class="feature2-inner reveal">
+      <!-- Left: pure black panel with white card inside -->
+      <div class="feature2-panel">
+        <div class="feature2-white-card" style="padding: 0; overflow: hidden;">
+          <img src="https://i.pinimg.com/736x/bd/03/d2/bd03d215b971bce5723661a4138658f7.jpg" alt="Molekul"
+            style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+      </div>
+
+      <!-- Right: text -->
+      <div class="feature2-text">
+        <h3>Ikatan Kovalen pada Karbon</h3>
+        <p>Karbon (C) istimewa karena mampu membentuk 4 ikatan kovalen sekaligus. Inilah yang menjadikan karbon sebagai
+          dasar dari seluruh kehidupan organik di bumi.</p>
+        <div class="molecule-switcher">
+          <span class="mol-label">Contoh Molekul:</span>
+          <div class="mol-buttons">
+            <button class="mol-btn active" data-mol="CH4">CH₄</button>
+            <button class="mol-btn" data-mol="CO2">CO₂</button>
+            <button class="mol-btn" data-mol="H2O">H₂O</button>
+          </div>
+        </div>
+        <div class="mol-desc" id="molDesc">
+          <strong>Metana (CH₄)</strong> — Gas alam yang terbentuk dari 1 karbon dan 4 hidrogen. Contoh ikatan kovalen
+          tunggal karbon yang paling sederhana.
+        </div>
+        <a href="#artikel" class="btn-secondary">Pelajari Lebih Lanjut</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CASE STUDY ══ -->
+  <section class="case-section">
+    <div class="case-inner reveal">
+      <div class="case-text">
+        <h3>"Nothing in life is to be feared, it is only to be understood."</h3>
+        <p>Pemahaman mendalam tentang materi di tingkat atom memungkinkan kita mengungkap misteri alam semesta dan
+          menggunakannya untuk kemajuan kemanusiaan.</p>
+        <p class="case-text-small">Kimia bukan sekadar rumus, melainkan kunci untuk memahami kehidupan itu sendiri.
+          Sekaranglah waktunya untuk memahami lebih banyak, agar kita tidak terlalu takut akan masa depan.</p>
+        <div class="case-person">
+          <div class="case-avatar"
+            style="background-image: url('https://i.pinimg.com/1200x/f3/bd/50/f3bd502c406b9cbf5b71d149e400320d.jpg'); background-size: cover;">
+          </div>
+          <span class="case-person-name">Marie Curie, Fisikawan & Kimiawan Pemenang Nobel</span>
+        </div>
+      </div>
+
+      <div class="case-visual-wrapper reveal">
+        <div class="case-geo-card"></div>
+        <div class="case-image">
+          <img src="https://i.pinimg.com/1200x/66/01/9c/66019c91a2844b8a6688bd9b1ee05a4b.jpg" alt="Ilustrasi Kimia"
+            style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PULL QUOTE ══ -->
+  <section class="quote-section">
+    <div class="quote-inner">
+      <p class="pull-quote reveal">"Segalanya terbuat dari atom. Itulah informasi paling penting yang pernah dimiliki
+        umat manusia tentang dunia kita."</p>
+      <div class="quote-avatar reveal"
+        style="background-image: url('https://i.pinimg.com/1200x/22/ee/2f/22ee2f3cc011d222d5986f9910ac813f.jpg'); background-size: cover;">
+      </div>
+      <div class="quote-author reveal">
+        <strong>Richard Feynman</strong>
+        Penerima Nobel Fisika & Pionir Mekanika Kuantum
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BLOG / CARDS ══ -->
+  <section class="blog-section" id="artikel">
+    <div class="blog-inner">
+      <div class="blog-header reveal">
+        <h2>Artikel Kimia Terpilih</h2>
+        <p>Pelajari konsep-konsep kimia dasar melalui artikel yang mudah dipahami, dari struktur atom hingga ikatan
+          kimia dalam kehidupan sehari-hari.</p>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Card 1 -->
+        <div class="blog-card reveal">
+          <div class="blog-card-img">
+            <img src="https://i.pinimg.com/1200x/ab/93/c6/ab93c6c7be642dfc46ce09d84aedf628.jpg"
+              alt="Ilustrasi Struktur Atom Hidrogen"
+              style="width: 50%; height: 100%; object-fit: cover; border-radius:5%;">
+          </div>
+          <div class="blog-card-body">
+            <h4>Mengenal Atom Hidrogen: Atom Paling Sederhana di Alam Semesta</h4>
+            <p>Hidrogen adalah unsur paling ringan dan paling melimpah. Hanya satu proton dan satu elektron — namun
+              menjadi bahan bakar bintang.</p>
+            <a href="#" class="learn-more">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="blog-card reveal">
+          <div class="blog-card-img">
+            <img src="https://i.pinimg.com/736x/d4/08/3f/d4083ff15714059da62faa46daa58a72.jpg"
+              alt="Ilustrasi Ikatan Kovalen" style="width: 90%; height: 90%; object-fit: cover; border-radius:5%;">
+          </div>
+          <div class="blog-card-body">
+            <h4>Ikatan Kovalen: Ketika Atom Berbagi Elektron</h4>
+            <p>Ikatan kovalen terbentuk ketika dua atom saling berbagi pasangan elektron. Inilah dasar terbentuknya
+              molekul seperti H₂O dan O₂.</p>
+            <a href="#" class="learn-more">Learn More</a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="blog-card reveal">
+          <div class="blog-card-img">
+            <img src="https://i.pinimg.com/736x/e4/6e/0e/e46e0e051dbbfe26f11eff1c032d2228.jpg"
+              alt="Ilustrasi Rantai Karbon" style="width: 95%; height: 95%; object-fit: cover; border-radius:5%;">
+          </div>
+          <div class="blog-card-body">
+            <h4>Rantai Karbon: Fondasi Kimia Organik dalam Kehidupan</h4>
+            <p>Karbon mampu berikatan dengan sesamanya membentuk rantai panjang. Inilah mengapa ada jutaan senyawa
+              organik yang menyusun makhluk hidup.</p>
+            <a href="#" class="learn-more">Learn More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <!-- Brand + blog snippet -->
+        <div class="footer-brand">
+          <span class="footer-logo">KimiaDasar</span>
+          <p class="footer-blog-label">Latest Blog Post</p>
+          <p class="footer-blog-title">Siap Memulai Belajar Kimia?</p>
+          <p class="footer-blog-excerpt">Platform belajar kimia dasar yang dirancang untuk pelajar SMA dan mahasiswa.
+            Materi disusun sistematis, mulai dari struktur atom, ikatan kimia, hingga reaksi kimia sederhana.</p>
+        </div>
+
+        <!-- Product links -->
+        <div class="footer-col">
+          <h5>Materi</h5>
+          <ul>
+            <li><a href="#">Struktur Atom</a></li>
+            <li><a href="#">Tabel Periodik</a></li>
+            <li><a href="#">Ikatan Kimia</a></li>
+            <li><a href="#">Ikatan Karbon</a></li>
+            <li><a href="#">Reaksi Kimia</a></li>
+            <li><a href="#">Kimia Organik</a></li>
+          </ul>
+        </div>
+
+        <!-- Company links -->
+        <div class="footer-col">
+          <h5>Tentang</h5>
+          <ul>
+            <li><a href="#">Tentang Kami</a></li>
+            <li><a href="#">Tim Pengajar</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Kontak</a></li>
+            <li><a href="#">Karir</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>&copy; 2010 — 2024</span>
+        <div class="footer-bottom-links">
+          <a href="#">Privasi</a>
+          <span>—</span>
+          <a href="#">Syarat & Ketentuan</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="Kembali ke atas">↑</button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
