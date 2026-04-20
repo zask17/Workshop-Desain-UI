@@ -650,8 +650,7 @@ nav.scrolled {
 
 
 /* ══════════════════════════════════════
-   FEATURE 2 — full-width black panel left
-   text right  (exactly like wireframe)
+   FEATURE 2 — full-width black panel left — text right
 ══════════════════════════════════════ */
 .feature2-section {
   background: var(--gray);
@@ -875,8 +874,10 @@ nav.scrolled {
 /* Kotak Putih di belakang (seperti Gambar 2) */
 .case-geo-card {
   position: absolute;
-  top: -20px; /* Geser ke atas */
-  right: -20px; /* Geser ke kanan */
+  top: -20px;
+  /* Geser ke atas */
+  right: -20px;
+  /* Geser ke kanan */
   width: 90%;
   height: 90%;
   background: var(--white);
@@ -895,7 +896,8 @@ nav.scrolled {
   align-items: center;
   justify-content: center;
   position: relative;
-  z-index: 2; /* Berada di atas kartu putih */
+  z-index: 2;
+  /* Berada di atas kartu putih */
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   transition: transform var(--tr-slow), box-shadow var(--tr-slow);
@@ -967,7 +969,6 @@ nav.scrolled {
 
 /* ══════════════════════════════════════
    BLOG / CARDS — gray bg, 3 columns
-   (wireframe: black image box, title, excerpt, "Learn More")
 ══════════════════════════════════════ */
 .blog-section {
   background: var(--gray);
@@ -1020,7 +1021,6 @@ nav.scrolled {
   border-color: #bbb;
 }
 
-/* Black image box — exactly like wireframe */
 .blog-card-img {
   background: var(--black);
   height: 190px;
@@ -1058,7 +1058,6 @@ nav.scrolled {
   line-height: 1.7;
 }
 
-/* "Learn More" — plain text link, exactly like wireframe */
 .learn-more {
   font-size: 11px;
   font-weight: 600;
@@ -1394,11 +1393,18 @@ footer {
     position: absolute;
     width: 500px;
     height: 1000px;
-    left: 60%;
-    top: 40%;
+    left: 80%;
+    top: 50%;
     transform: translate(-40%, -55%) scale(0.5);
     z-index: 1;
     pointer-events: none;
+  }
+
+  .feature-geo-overlay {
+    left: 90%;
+    top: 30%;
+    right: 50%;
+    transform: translate(-50%, -50%) scale(0.5);
   }
 
   /* FEATURE 1 (Atom) */
@@ -1426,7 +1432,9 @@ footer {
   }
 
   .feature2-panel {
-    min-height: 100px;
+    max-height: 50px;
+    max-width: auto;
+    justify-content: flex-start;
   }
 
   .feature2-white-card {
@@ -1522,21 +1530,13 @@ footer {
     position: absolute;
     width: 300px;
     height: 300px;
-    left: 80%;
-    top: 80%;
+    left: 100%;
+    top: 90%;
     transform: translate(-70%, -80%) scale(0.5);
     z-index: 1;
     pointer-events: none;
   }
 
-  .feature-geo-overlay {
-    top: auto;
-    bottom: -150px;
-    right: 50%;
-    transform: translateX(50%) scale(0.7);
-    width: 300px;
-    height: 300px;
-  }
 
   .blog-grid {
     grid-template-columns: 1fr;
@@ -1544,6 +1544,13 @@ footer {
 
   .logo-strip {
     gap: 8px;
+  }
+
+  .feature-geo-overlay {
+    left: 50%;
+    top: 100%;
+    right: 50%;
+    transform: translate(-50%, -50%) scale(0.4);
   }
 
   .logo-pill {
